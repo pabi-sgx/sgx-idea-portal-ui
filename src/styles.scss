@@ -3,3 +3,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.global-btn {
+    background: #002c77 !important;
+    border-radius: 3px !important;
+    min-width: 120px;
+}

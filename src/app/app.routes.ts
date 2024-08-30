@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import { RegistrationComponent } from './featured/components/registration/registration.component';
+import { IdeasListComponent } from './featured/components/ideas-list/ideas-list.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/registration', pathMatch: 'full' },
-    { path: 'registration', component: RegistrationComponent }
+    { path: 'registration', component: RegistrationComponent },
+    { path: 'ideas-list', component: IdeasListComponent }
 ];

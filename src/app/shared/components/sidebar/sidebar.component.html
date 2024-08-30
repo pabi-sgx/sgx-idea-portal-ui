@@ -1,0 +1,18 @@
+<div class="sidebar-opener" (click)="toggleSidebar()">
+</div>
+
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+  <button type="button"
+      class="sidebar-close"
+      (click)="toggleSidebar()"
+  >
+      X
+  </button>
+  <div class="sidebar-content">
+    <h2 class="w-full mb-5"> Idea Portal</h2>
+    <div class="link"><a [routerLink]="'/registration'">Registration</a></div>
+    <div class="link"><a [routerLink]="'/ideas-list'">Ideas List</a></div>
+  </div>
+</div>
+
+<div class="backdrop" *ngIf="sidebarShow" (click)="toggleSidebar()"></div>
