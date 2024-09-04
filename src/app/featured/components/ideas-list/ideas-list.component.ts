@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RegistrationDataService } from '../../../idea-service.service';
+
 
 @Component({
   selector: 'app-ideas-list',
-  standalone: true,
-  imports: [],
   templateUrl: './ideas-list.component.html',
-  styleUrl: './ideas-list.component.scss'
+  styleUrls: ['./ideas-list.component.scss']
 })
-export class IdeasListComponent {
+export class IdeasListComponent implements OnInit {
+  registrationData: any[] = [];
+  constructor(private registrationDataService: RegistrationDataService) { }
 
+  ngOnInit(): void {
+    this.registrationData = this.registrationDataService.getRegistrationData();
+  }
 }
