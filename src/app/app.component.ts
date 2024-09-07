@@ -22,7 +22,7 @@ export class AppComponent {
 
   constructor(private _apiService: ApiServiceService) {
     _apiService.get('todos/1').subscribe(res => {
-      console.log(res);
+      // console.log(res);
       
     })
   }

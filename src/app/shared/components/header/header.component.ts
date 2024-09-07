@@ -19,7 +19,7 @@ export class HeaderComponent {
   toggleSidebar() {
     // this.sidebar = document.getElementById('sidebar');
     // this.content = document.querySelector('.content');
-    console.log('jj');
+    // console.log('jj');
     
     this._commonService.sidebarShow.next(true);
     // sidebar.classList.toggle('expanded');
