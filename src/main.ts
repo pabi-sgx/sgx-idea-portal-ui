@@ -9,9 +9,9 @@ bootstrapApplication(AppComponent, appConfig)
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { IdeasListComponent } from './app/featured/components/ideas-list/ideas-list.component';
-import { NgModule } from '@angular/core';
-import { RegistrationComponent } from './app/featured/components/registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: []

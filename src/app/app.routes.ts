@@ -3,7 +3,7 @@ import { RegistrationComponent } from './featured/components/registration/regist
 import { IdeasListComponent } from './featured/components/ideas-list/ideas-list.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/registration', pathMatch: 'full' },
+    { path: '', redirectTo: '/ideas-list', pathMatch: 'full' },
     { path: 'registration', component: RegistrationComponent },
     { path: 'ideas-list', component: IdeasListComponent }
 ];

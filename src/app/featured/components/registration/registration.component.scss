@@ -3,3 +3,22 @@
     border: 2px solid #002c77;
     opacity: 0.8;
 }
+
+.form-label {
+    min-width: 120px; 
+    margin-bottom: 0;
+}
+
+input, textarea {
+    flex: 1; 
+}
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 220px;
+    .global-btn {
+        width: 150px;
+
+    }
+}
