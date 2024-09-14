@@ -55,7 +55,7 @@ export class IdeasListComponent implements OnInit {
       this.ideaDetail = { ...idea };
       this.editingIdea = idea;
       this.isDetailVisible = this.isDoubleClicked ? false : true;
-    }, 50);
+    }, 300);
     this.isDoubleClicked = false;
   }
 
