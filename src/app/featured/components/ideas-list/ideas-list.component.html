@@ -1,37 +1,95 @@
-
 <h2>Ideas</h2>
 <hr class="title-underline">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>
-        Full Name
-        <input type="text" class="form-control" placeholder="Search by Full Name" [(ngModel)]="filterString" (ngModelChange)="applyFilter()" />
-      </th>
-      <th>
-        Employee ID
-        <input type="text" class="form-control" placeholder="Search by Employee ID" [(ngModel)]="filterString" (ngModelChange)="applyFilter()" />
-      </th>
-      <th>
-        Title
-        <input type="text" class="form-control" placeholder="Search by Title" [(ngModel)]="filterString" (ngModelChange)="applyFilter()" />
-      </th>
-      <th>
-        Status
-        <input type="text" class="form-control" placeholder="Search by Status" [(ngModel)]="filterString" (ngModelChange)="applyFilter()" />
-      </th>
-      <th>Submitted Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let idea of filteredIdeas">
-      <td>{{ idea.id }}</td>
-      <td>{{ idea.fullName }}</td>
-      <td>{{ idea.empId }}</td>
-      <td>{{ idea.title }}</td>
-      <td>{{ idea.status }}</td>
-      <td>{{ idea.submitteddate | date:'yyyy-MM-dd' }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped responsive">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>
+          Full Name
+          <input type="text" class="form-control" placeholder="Search by Full Name" [(ngModel)]="filterString"
+            (ngModelChange)="applyFilter()" />
+        </th>
+        <th>
+          Employee ID
+          <input type="text" class="form-control" placeholder="Search by Employee ID" [(ngModel)]="filterString"
+            (ngModelChange)="applyFilter()" />
+        </th>
+        <th>
+          Title
+          <input type="text" class="form-control" placeholder="Search by Title" [(ngModel)]="filterString"
+            (ngModelChange)="applyFilter()" />
+        </th>
+        <th>
+          Status
+          <input type="text" class="form-control" placeholder="Search by Status" [(ngModel)]="filterString"
+            (ngModelChange)="applyFilter()" />
+        </th>
+        <th>Submitted Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let idea of filteredIdeas" (click)="showDetails(idea)" (dblclick)="selectIdea(idea)"
+        [class.selected]="selectedIdea === idea">
+        <td>{{ idea.id }}</td>
+        <td>
+          <span *ngIf="!idea.editing">{{ idea.fullName }}</span>
+          <input *ngIf="idea.editing" type="text" [(ngModel)]="idea.fullName" (blur)="saveEdit(idea)"
+            class="form-control">
+        </td>
+        <td>
+          <span *ngIf="!idea.editing">{{ idea.empId }}</span>
+          <input *ngIf="idea.editing" type="text" [(ngModel)]="idea.empId" (blur)="saveEdit(idea)" class="form-control">
+        </td>
+        <td>
+          <span *ngIf="!idea.editing">{{ idea.title }}</span>
+          <input *ngIf="idea.editing" type="text" [(ngModel)]="idea.title" (blur)="saveEdit(idea)" class="form-control">
+        </td>
+        <td>
+          <span *ngIf="!idea.editing">{{ idea.status }}</span>
+          <select *ngIf="idea.editing" [(ngModel)]="idea.status" (blur)="saveEdit(idea)" class="form-control">
+            <option value="submitted">Submitted</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="in-progress">In Progress</option>
+            <option value="not-approved">Not Approved</option>
+            <option value="duplicate">Duplicate</option>
+          </select>
+        </td>
+        <td>{{ idea.submitteddate | date: 'MMM dd, yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="ideaDetail && isDetailVisible" class="mt-4">
+  <h2>Details</h2>
+  <hr class="title-underline">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>ID:</strong> {{ ideaDetail.id }}</p>
+      <p><strong>Full Name:</strong> {{ ideaDetail.fullName }}</p>
+      <p><strong>Employee ID:</strong> {{ ideaDetail.empId }}</p>
+      <p><strong>Title:</strong> {{ ideaDetail.title }}</p>
+      <p><strong>Submitted Date:</strong> {{ ideaDetail.submitteddate | date: 'MMM dd, yyyy' }}</p>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="status"><strong>Status:</strong></label>
+        <select id="status" class="form-select form-control" [(ngModel)]="ideaDetail.status"
+          aria-label="Default select example">
+          <option value="">Select status</option>
+          <option value="submitted">Submitted</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="in-progress">In Progress</option>
+          <option value="not-approved">Not Approved</option>
+          <option value="duplicate">Duplicate</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description"><strong>Description:</strong></label>
+        <textarea id="description" class="form-control" rows="3" [(ngModel)]="ideaDetail.description"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
